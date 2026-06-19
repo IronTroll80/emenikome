@@ -28,8 +28,10 @@ body {
   color: var(--foreground);
   display: flex;
   flex-direction: column;
+  font-family: var(--font-dmsans);
 }
 
 input:focus{
   outline: none;
 }
+

@@ -1,18 +1,29 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: [
+    {
+      path: "./fonts/DMSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/DMSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/DMSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-dmsans",
+  display: "swap",
 });
-
 
 export const metadata: Metadata = {
   title: "Kome Emeni",
