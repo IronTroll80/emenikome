@@ -1,6 +1,8 @@
 import Footer from "../components/footer";
 import Header from "../components/header";
 import PageContent from "../components/pageContent";
+import shopsafeWireframe from '@/public/shopsafe_wireframe.png'
+import shopsafeUi from '@/public/shopsafe_ui.png'
 
 export default function Shopsafe (){
     return (
@@ -37,15 +39,35 @@ export default function Shopsafe (){
 
             process={[ {
                 type: 'text',
-                content: 'Lorem Ipsum dolor sit amet consecteur'
+                content: 'PRD breakdown: Took the PRD AuthID provided and translated requirements into design scope. Pulled out what needed to exist for MVP (scan flow, Trust Score, CPS, ingredient intelligence, help screens) vs. what could wait, and flagged ambiguous requirements that needed design decisions to resolve.'
+            },
+            {
+                type: 'text',
+                content: `Information architecture + user flows — Structured the full app around the core loop: scan a product, land on a result, drill into ingredient detail, exit to help if something's unclear. Mapped how Trust Score and CPS would surface at each step so the user never had to ask "what am I looking at."`
+            },
+            {
+                type: 'text',
+                content: `Wireframing — Low-fidelity layouts for every MVP screen. Prioritized hierarchy first: what the eye hits in the first second on a result screen, where risk signals sit relative to product info, how dense the ingredient breakdown could get before it stopped being scannable.`
             },
             {
                 type: 'image',
-                content: '/example.jpg'
+                content: '/shopsafe_wireframe.png'
+            },
+            {
+                type: 'text',
+                content: `Took wireframes to full visual design. Built the screen system, the Trust Score and CPS visual treatment (color, iconography, scoring display), ingredient intelligence UI, help screens, and logo concepts, all tied together into one consistent visual language built for fast trust signals over decoration.`
+            },
+            {
+                type: 'image',
+                content: '/shopsafe_ui.png'
+            },
+            {
+                type: 'text',
+                content: `Prototyping — Built interactive HTML mockups of the full flow so the experience could be clicked through end to end, not reviewed as static screens. This is what got handed off and used to pressure-test the design decisions before any real build.`
             }]
             }
             
-            gallery = {[ '/me.png']}/>
+            gallery = {[ '/shopsafe_wireframe.png', '/shopsafe_ui.png', '/shopsafe.png']}/>
         <Footer/>
         
         </>

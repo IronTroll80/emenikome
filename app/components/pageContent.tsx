@@ -1,5 +1,13 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './pageContent.module.css'
+import { motion } from "framer-motion";
+
+interface Process{
+    type: string
+    content: string
+}
 
 interface Props {
     introText : string
@@ -12,7 +20,7 @@ interface Props {
     roles: string[]
     tools: string[]
     brandBrief: string,
-    process: object[]
+    process: Process[]
     knowledge: string;
     gallery: string[]
     heroBg: string
@@ -38,18 +46,6 @@ export default function PageContent ({
 }: Props){
 
 
-    const testProcess = [
-        
-        {
-            type: 'text',
-            content: 'Lorem Ipsum dolor sit amet consecteur'
-        },
-        {
-            type: 'image',
-            content: '/example.jpg'
-        }
-    ]
-
     return(
         
         <>
@@ -57,12 +53,18 @@ export default function PageContent ({
         <div className= {styles.container}>
             <h3 className= {styles.introText}><i>{introText}</i></h3>
             <p className= {styles.subtitle}>{subtitle}</p>
-            <div className= {styles.hero} style={{backgroundImage: `url(${heroBg})`}}>
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0 }}
+                transition={{ duration: 0.55 }} 
+                className= {styles.hero} 
+                style={{backgroundImage: `url(${heroBg})`}}>
                 <div className= {styles.overlay} style={{backgroundColor: `${overlayColor}`}}>
                     <h4 className= {styles.projectTitle}>{page}</h4>
                     <p className= {styles.projectDescription}>{desc}</p>
                 </div>
-            </div>
+            </motion.div>
 
 {/* 
             <div className= {styles.imageContainer}>
@@ -79,7 +81,11 @@ export default function PageContent ({
                 }
             </div>
 
-            <div className= {styles.heroInfo}>
+            <motion.div className= {styles.heroInfo}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0 }}
+                    transition={{ duration: 0.55 }}>
 
                 <div className= {styles.heroSection}>
                         <h4>My Roles</h4>
@@ -108,32 +114,33 @@ export default function PageContent ({
                         <p>{duration}</p>
                 </div>   
 
-            </div>     
-        <div className= {styles.brand}>
+            </motion.div>     
+        <motion.div 
+            className= {styles.brand} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0 }}
+            transition={{ duration: 0.55 }}>
             <h4 className= {styles.brandHeader}>The Brand</h4>
             <p>{brandAbout}</p>
-        </div>
+        </motion.div>
 
-        <div className= {styles.brief}>
+        <motion.div className= {styles.brief}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0 }}
+            transition={{ duration: 0.55 }}>
             <h4 className= {styles.brandHeader}>The Brief</h4>
             <p>{brandBrief}</p>
-        </div>
+        </motion.div>
 
-        <div className = {styles.knowledge}>
-            <h4 className= {styles.brandHeader}>The Takeaway</h4>
-            <p>{knowledge}</p>
-        </div>
-
-        <div className= {styles.gallery}>
-
-            <h4 className= {styles.galleryHeader}>Gallery</h4>
-            {gallery.map((image, index)=>(
-                <Image key={index} src={image} alt='gallery_img' width={40} height={40}/>
-            ))}
-        </div>
-
-        <div className= {styles.process}>
-            {testProcess.map((step, index)=>(
+        <motion.div className= {styles.process}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0 }}
+            transition={{ duration: 0.55 }}>
+            <h4 className= {styles.brandHeader}>The Process</h4>
+            {process.map((step, index)=>(
                 step.type === 'text' ? 
                 <p className= {styles.processText} key={index}>
                     {step.content}
@@ -141,10 +148,35 @@ export default function PageContent ({
 
                 :
 
-                <Image src={step.content} alt='step' width={40} height={40} />
+                <Image src={step.content} alt='step' key={index} width={500} height={280}/>
 
             ))}
-        </div>
+        </motion.div>
+
+        <motion.div className = {styles.knowledge} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0 }}
+            transition={{ duration: 0.55 }}>
+            <h4 className= {styles.brandHeader}>The Takeaway</h4>
+            <p>{knowledge}</p>
+        </motion.div>
+
+        <motion.div className= {styles.gallery} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0 }}
+            transition={{ duration: 0.55 }}>
+
+            <h4 className= {styles.brandHeader}>Gallery</h4>
+            <div className= {styles.galleria}>
+            {gallery.map((image, index)=>(
+                <Image key={index} src={image} alt='gallery_img' width={300} height={300}/>
+            ))}
+            </div>
+        </motion.div>
+
+
 
         </div>
         
